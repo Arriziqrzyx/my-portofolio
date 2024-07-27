@@ -1,0 +1,122 @@
+:root {
+  --main-color: #416D19; /* Default color */
+  --text-color: #FFF;
+  --bg-color: #080808;
+  --second-bg-color: #151515;
+  --light-color: #666;
+
+  /* Light Mode Colors */
+  --bg-color-light: #F5F5F5;
+  --second-bg-color-light: #E0E0E0;
+  --text-color-light: #000;
+
+  /* Dark Mode Colors */
+  --bg-color-dark: #080808;
+  --second-bg-color-dark: #151515;
+  --text-color-dark: #FFF;
+}
+
+body.dark-mode {
+  background-color: var(--bg-color-dark);
+  color: var(--text-color-dark);
+}
+
+body.light-mode {
+  background-color: var(--bg-color-light);
+  color: var(--text-color-light);
+}
+
+* {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-transform: capitalize;
+  transition: all .2s linear;
+  text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  width: 0rem;
+  height: 10rem;
+}
+
+html {
+  font-size: 63.5%;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+section {
+  padding: 5rem 5%;
+}
+
+/* Loading Animation */
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.loader.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loader .spinner {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #FFF;
+  animation: spin 1s ease-in-out infinite;
+}
+
+.modal-title-lg {
+  font-size: 2rem;
+}
+
+.modal-header .btn-close {
+  font-size: 1.5rem;
+  padding: 0.5rem;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* For Tablets */
+@media all and (max-width: 1024px) {
+  html {
+    font-size: 55.5%;
+  }
+}
+
+/* For Smartphones */
+@media all and (max-width: 670px) {
+  html {
+    font-size: 50.5%;
+  }
+
+  section {
+    padding: 1rem;
+  }
+}
