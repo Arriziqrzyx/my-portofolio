@@ -63,9 +63,15 @@ const Footer = () => {
   return (
     <footer className={classes.footer}>
       <div className={classes.icons}>
-        <i className="fab fa-linkedin" aria-hidden="true"></i>
-        <i className="fab fa-github" aria-hidden="true"></i>
-        <i className="fab fa-instagram" aria-hidden="true"></i>
+        <a href="https://www.linkedin.com/in/arriziq/" target="_blank" rel="noopener noreferrer">
+          <i className="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+        <a href="https://github.com/Arriziqrzyx" target="_blank" rel="noopener noreferrer">
+          <i className="fab fa-github" aria-hidden="true"></i>
+        </a>
+        <a href="https://www.instagram.com/arrijiq/" target="_blank" rel="noopener noreferrer">
+          <i className="fab fa-instagram" aria-hidden="true"></i>
+        </a>
       </div>
       <nav className={classes.navbar}>
         <a href="#Home">Home</a>

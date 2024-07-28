@@ -181,12 +181,18 @@ const HomeSection = () => {
           Beginner and a fresh Bachelor's graduate in Information Technology from Universitas Amikom Purwokerto, completing my studies in 7 semesters with a GPA of 3.69. I have experience participating in the MSIB Kampus Merdeka program in 'Game Development' and the FGA Digitalent Kominfo Program in 'Mobile App Development with React Native'. These experiences have inspired me to pursue a career as a Web/Mobile Programmer. I am highly enthusiastic and motivated to continue learning and ready to contribute effectively to your team.
         </p>
         <div className={classes.icons}>
-          <i className="fab fa-linkedin" aria-hidden="true"></i>
-          <i className="fab fa-github" aria-hidden="true"></i>
-          <i className="fab fa-instagram" aria-hidden="true"></i>
+          <a href="https://www.linkedin.com/in/arriziq/" target="_blank" rel="noopener noreferrer">
+            <i className="fab fa-linkedin" aria-hidden="true"></i>
+          </a>
+          <a href="https://github.com/Arriziqrzyx" target="_blank" rel="noopener noreferrer">
+            <i className="fab fa-github" aria-hidden="true"></i>
+          </a>
+          <a href="https://www.instagram.com/arrijiq/" target="_blank" rel="noopener noreferrer">
+            <i className="fab fa-instagram" aria-hidden="true"></i>
+          </a>
         </div>
         <div className={classes.flexBtn}>
-          <a href="#" className={classes.btn}>download CV</a>
+          <a href="https://drive.usercontent.google.com/uc?id=1Ks7WXK_C2d5Co8ky2Argu5p_eNmTlC2G&export=download" target="_blank" className={classes.btn}>download CV</a>
         </div>
       </div>
       <div className={classes.flexImg}>
