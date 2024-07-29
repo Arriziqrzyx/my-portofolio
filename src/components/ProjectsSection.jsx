@@ -7,13 +7,15 @@ import imgHP from '../assets/Projects/HP.png';
 import imgVegifoody from '../assets/Projects/Vegifoody.png';
 import imgMovieApp from '../assets/Projects/MovieApp.png';
 import imgCC from '../assets/Projects/CC.png';
+import imgCR from '../assets/Projects/CrossyRoad.png';
 
 const projects = [
-  { id: 1, src: imgSOH, title: 'Sentinel of Health', description: 'Unity 2D Mobile Game', link: 'https://example.com/soh' },
-  { id: 2, src: imgHP, title: 'Harmoni Pesisir', description: 'Unity 2D Mobile Game', link: 'https://example.com/hp' },
-  { id: 3, src: imgVegifoody, title: 'Vegifoody', description: 'Unity 2D Mobile Game', link: 'https://example.com/vegifoody' },
-  { id: 4, src: imgMovieApp, title: 'Movie App', description: 'React Native Mobile App', link: 'https://example.com/movieapp' },
-  { id: 5, src: imgCC, title: 'UI/UX Cyber Coin', description: 'Figma UI/UX Design', link: 'https://example.com/cc' },
+  { id: 1, src: imgSOH, title: 'Sentinel of Health', description: 'Unity 2D Mobile Game', link: 'https://nyipu.itch.io/sentinels-of-health' },
+  { id: 2, src: imgHP, title: 'Harmoni Pesisir', description: 'Unity 2D Mobile Game', link: 'https://nyipu.itch.io/harmoni-pesisir-game-edukasi-konservasi-laut' },
+  { id: 3, src: imgVegifoody, title: 'Vegifoody', description: 'Unity 2D Mobile Game', link: 'https://github.com/Arriziqrzyx/Vegifoody' },
+  { id: 4, src: imgMovieApp, title: 'Movie App', description: 'React Native Mobile App', link: 'https://github.com/Arriziqrzyx/team9_movie_app' },
+  { id: 5, src: imgCC, title: 'UI/UX Cyber Coin', description: 'Figma UI/UX Design', link: 'https://drive.google.com/file/d/1cMr9XrE6CGBrRkIfzV_gGbLf4RrJKHeu/view?usp=sharing' },
+  { id: 6, src: imgCR, title: 'Crossy Road', description: 'Unity 3D Windows Game', link: 'https://github.com/Arriziqrzyx/Kyuubi-Crossy-Box' },
 ];
 
 const useStyles = makeStyles((theme) => ({

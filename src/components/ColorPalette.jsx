@@ -19,6 +19,10 @@ const useStyles = makeStyles({
     cursor: 'pointer',
     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
     zIndex: 1050,
+    '@media (max-width: 768px)': {
+      top: '6rem',
+      right: '1.5rem',
+    },
   },
   toastContainer: {
     position: 'fixed',

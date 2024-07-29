@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@mui/styles';
-import { Button } from 'react-bootstrap';
+import { Button, Modal } from 'react-bootstrap';
+import emailjs from 'emailjs-com';
+import { CheckCircle, XCircle } from 'react-bootstrap-icons';
 
 const useStyles = makeStyles({
   contact: {
@@ -11,7 +13,7 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    '@media (max-width: 768px)': { // Media query untuk tablet/phone
+    '@media (max-width: 768px)': {
       padding: '5rem 0',
     },
   },
@@ -27,7 +29,7 @@ const useStyles = makeStyles({
   },
   formContainer: {
     width: '100%',
-    '@media (max-width: 768px)': { // Media query untuk tablet/phone
+    '@media (max-width: 768px)': {
       width: '90%',
     },
   },
@@ -39,7 +41,7 @@ const useStyles = makeStyles({
     gap: '1rem',
     padding: '2rem',
     width: '100%',
-    '@media (max-width: 768px)': { // Media query untuk tablet/phone
+    '@media (max-width: 768px)': {
       flexDirection: 'column',
       padding: '2rem 0',
     },
@@ -51,7 +53,7 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     gap: '1rem',
     width: '49%',
-    '@media (max-width: 768px)': { // Media query untuk tablet/phone
+    '@media (max-width: 768px)': {
       width: '100%',
     },
   },
@@ -62,7 +64,7 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     gap: '1rem',
     width: '49%',
-    '@media (max-width: 768px)': { // Media query untuk tablet/phone
+    '@media (max-width: 768px)': {
       width: '100%',
       marginTop: '1rem',
     },
@@ -104,14 +106,69 @@ const useStyles = makeStyles({
       boxShadow: '0 0 10px var(--main-color), 0 0 20px var(--main-color), 0 0 30px var(--main-color)',
       backgroundColor: 'var(--main-color)',
     },
-    '@media (max-width: 768px)': { // Media query untuk tablet/phone
+    '@media (max-width: 768px)': {
       marginTop: '2rem',
     },
+  },
+  modal: {
+    backgroundColor: 'white',
+    borderRadius: '0.5rem',
+  },
+  modalSuccess: {
+    color: 'green',
+  },
+  modalError: {
+    color: 'red',
+  },
+  modalIcon: {
+    fontSize: '4rem',
+    margin: 15,
+  },
+  modalBody: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    textAlign: 'center',
+  },
+  modalTitle: {
+    fontSize: '1.5rem',
+    fontWeight: 'bold',
+    color: 'var(--text-color-light)'
+  },
+  modalText: {
+    fontSize: '2rem',
+    color: 'var(--text-color-light)'
   },
 });
 
 const ContactSection = () => {
   const classes = useStyles();
+  const [showModal, setShowModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState('');
+  const [modalTitle, setModalTitle] = useState('');
+  const [modalClass, setModalClass] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm('service_4u30qyo', 'template_lyqfocl', e.target, 'O-jXvU6bYAODS8_cw')
+      .then((result) => {
+        setModalTitle('Success');
+        setModalMessage('Message sent successfully!');
+        setModalClass('modalSuccess');
+        setShowModal(true);
+        e.target.reset();
+      }, (error) => {
+        setModalTitle('Error');
+        setModalMessage('Failed to send message. Please try again.');
+        setModalClass('modalError');
+        setShowModal(true);
+      });
+  };
+
+  const modalIcon = modalClass === 'modalSuccess' ? 
+    <CheckCircle className={`${classes.modalIcon} ${classes.modalSuccess}`} /> : 
+    <XCircle className={`${classes.modalIcon} ${classes.modalError}`} />;
 
   return (
     <section className={classes.contact} id="Contact">
@@ -119,21 +176,38 @@ const ContactSection = () => {
         Contact <span className={classes.headingSpan}>me</span>
       </h2>
       <div className={classes.formContainer}>
-        <form action="#" method="get" className={classes.form}>
+        <form onSubmit={handleSubmit} className={classes.form}>
           <div className={classes.inputs}>
-            <input type="text" placeholder="Full Name" className={classes.input} />
-            <input type="email" placeholder="Email" className={classes.input} />
-            <input type="tel" placeholder="Phone Number" className={classes.input} />
-            <input type="text" placeholder="Subject" className={classes.input} />
+            <input type="text" name="name" placeholder="Full Name" className={classes.input} required />
+            <input type="email" name="email" placeholder="Email" className={classes.input} required />
+            <input type="tel" name="phone" placeholder="Phone Number" className={classes.input} />
+            <input type="text" name="subject" placeholder="Subject" className={classes.input} />
           </div>
           <div className={classes.text}>
-            <textarea placeholder="Your message" className={classes.textarea}></textarea>
-            <Button variant="primary" className={classes.button}>
+            <textarea name="message" placeholder="Your message" className={classes.textarea} required></textarea>
+            <Button type="submit" variant="primary" className={classes.button}>
               Send Message
             </Button>
           </div>
         </form>
       </div>
+
+      <Modal show={showModal} onHide={() => setShowModal(false)} centered>
+        <Modal.Header closeButton className={classes.modal}>
+          <Modal.Title className={classes.modalTitle}>{modalTitle}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body className={classes.modalBody}>
+          <div className={modalClass}>
+            {modalIcon}
+            <div className={classes.modalText}>{modalMessage}</div>
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" size="lg" onClick={() => setShowModal(false)}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </section>
   );
 };
